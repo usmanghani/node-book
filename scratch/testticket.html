@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Testing Knockout</title>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+	</script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js">
+	</script>
+	<script src="ticket.js">
+	</script>
+	<script>
+		$(document).ready(function() { 
+			console.log("loading up yo...");
+			ko.applyBindings(new ChosenTicketModel());
+		});
+	</script>
+</head>
+<body>
+	<select data-bind="options: tickets, optionsCaption: 'Choose...', optionsText: 'name', value: chosenTicket">
+	</select>
+	<button data-bind="enable: chosenTicket, click: resetTicket">Clear</button>
+	<p data-bind="with: chosenTicket">
+		You have chosen <b data-bind="text: name"></b>
+		($<span data-bind="text: price"></span>)
+	</p>
+</body>
+</html>
